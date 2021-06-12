@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AnswerCell" id="gTV-IL-0wX" customClass="AnswerCollectionViewCell" customModule="Millionaire" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="150" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="150" height="50"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dd0-xb-Wfb">
+                        <rect key="frame" x="10" y="10" width="130" height="30"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" systemColor="linkColor"/>
+            <constraints>
+                <constraint firstItem="dd0-xb-Wfb" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="1GD-tD-2Bu"/>
+                <constraint firstItem="dd0-xb-Wfb" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="3gH-69-9jZ"/>
+                <constraint firstAttribute="trailing" secondItem="dd0-xb-Wfb" secondAttribute="trailing" constant="10" id="7XG-q3-l4J"/>
+                <constraint firstAttribute="bottom" secondItem="dd0-xb-Wfb" secondAttribute="bottom" constant="10" id="l2e-3f-8Hj"/>
+            </constraints>
+            <size key="customSize" width="150" height="50"/>
+            <connections>
+                <outlet property="answerLabel" destination="dd0-xb-Wfb" id="Dxr-wT-G8I"/>
+            </connections>
+            <point key="canvasLocation" x="178.2608695652174" y="62.946428571428569"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
