@@ -37,19 +37,28 @@ final class GameViewController: UIViewController {
         
         self.collectionView.register(UINib(nibName: "AnswerCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "AnswerCell")
         
+        self.collectionView.backgroundColor = UIColor.clear
+        
         self.session = GameSession()
         
         prepareQuestions()
         showNextQuestion()
     }
     
-    private func prepareQuestions() {
-        for item in questions {
-            var answers = item.answers
-            let index = Int.random(in: 0..<item.answers.count)
+    private func addQuestions(from category: Dificulty) {
+        guard let questions = questionsDB[category] else { return }
+        for question in questions {
+            var answers = question.answers
+            let index = Int.random(in: 0..<answers.count)
             answers.insert(answers.removeFirst(), at: index)
-            data.append(Question(question: item.question, answers: answers, answerID: index))
+            data.append(Question(question: question.question, answers: answers, answerID: index))
         }
+    }
+    
+    private func prepareQuestions() {
+        addQuestions(from: .easy)
+        addQuestions(from: .medium)
+        addQuestions(from: .hard)
     }
     
     private func showNextQuestion() {
@@ -71,8 +80,6 @@ final class GameViewController: UIViewController {
         
         gradient.frame = CGRect(x: 0.0, y: 0.0, width: self.view.frame.size.width, height: self.view.frame.size.height)
         self.view.layer.insertSublayer(gradient, at: 0)
-        
-        self.collectionView.backgroundColor = UIColor(hexString: "#29539b")
     }
     
     private func endGameSession() {
@@ -133,24 +140,23 @@ final class GameViewController: UIViewController {
     }
     
     @IBAction func fiftyFiftyButtonHandler(_ sender: Any) {
-        let answerID = data[answered].answerID
-        var removed = 0
+        var indexes = [data[answered].answerID]
         
-        while removed < 2 {
+        while indexes.count < 3 {
             let index = Int.random(in: 0...3)
             
-            guard index != answerID else { continue }
+            guard !indexes.contains(index) else { continue }
             
             let indexPath = IndexPath(row: index, section: 0)
             let cell = self.collectionView.cellForItem(at: indexPath)
             
             (cell as! AnswerCollectionViewCell).setAnswerText(answer: "")
             
-            removed += 1
+            indexes.append(index)
         }
         
         self.fiftyFiftyButton.isEnabled = false
-        self.session?.hints[.friend] = true
+        self.session?.hints[.exclude] = true
     }
 }
 
@@ -177,16 +183,33 @@ extension GameViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.collectionView.deselectItem(at: indexPath, animated: true)
         
-        if indexPath.row != self.data[self.answered].answerID {
-            self.endGameSession()
+        let answerID = self.data[self.answered].answerID
+        if indexPath.row != answerID {
+            let message = "Правильный ответ: \(self.data[self.answered].answers[answerID])"
+            
+            let alert = UIAlertController(title: "Вы проиграли", message: message, preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .cancel, handler: { _ in
+                self.endGameSession()
+            })
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+            
+            return
         }
         
         self.answered += 1
         
         if self.answered == data.count {
-            self.endGameSession()
+            let alert = UIAlertController(title: "Поздравляю", message: "Вы стали миллионером", preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .cancel, handler: { _ in
+                self.endGameSession()
+            })
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+            
+            return
         }
-
+        
         showNextQuestion()
     }
 }

@@ -21,10 +21,10 @@ struct Record: Codable {
     }
     
     static func < (left: Record, right: Record) -> Bool {
-        return left.answered < right.answered
-    }
-    
-    static func > (left: Record, right: Record) -> Bool {
-        return left.answered > right.answered
+        if left.prize == right.prize {
+            return left.answered < right.answered
+        }
+        
+        return left.prize < right.prize
     }
 }

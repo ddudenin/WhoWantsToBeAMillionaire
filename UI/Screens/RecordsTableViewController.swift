@@ -9,7 +9,7 @@ import UIKit
 
 final class RecordsTableViewController: UITableViewController {
     
-    private let records = Game.instance.records
+    private let game = Game.instance
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,12 +24,19 @@ final class RecordsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.records.count
+        return self.game.records.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recordCell", for: indexPath) as! RecordTableViewCell
-        cell.configue(withRecord: self.records[indexPath.row])
+        cell.configue(withRecord: self.game.records[indexPath.row])
         return cell
     }
+    
+    
+    @IBAction func removeAllButtonHandler(_ sender: Any) {
+        self.game.removeAllRecords()
+        self.tableView.reloadData()
+    }
+    
 }

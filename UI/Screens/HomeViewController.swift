@@ -41,7 +41,9 @@ final class HomeViewController: UIViewController {
 
 extension HomeViewController: GameViewControllerDelegate {
     func gameViewController(_ viewController: GameViewController, didEndGameWith record: Record) {
-        Game.instance.addRecord(record)
+        if record.answered > 0 {
+            Game.instance.addRecord(record)
+        }
         viewController.dismiss(animated: true)
     }
 }
