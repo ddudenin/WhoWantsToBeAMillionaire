@@ -40,7 +40,7 @@ class Game {
 
 struct GameSession {
     var hints: [Hint : Bool] = [.friend : false, .audience : false, .exclude : false]
-    var facade: HintsUsageFacade?
+    var facade = HintsUsageFacade()
     var userBreak = false
     var answered = 0
 }

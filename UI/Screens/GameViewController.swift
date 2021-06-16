@@ -76,6 +76,7 @@ final class GameViewController: UIViewController {
     
     private func showNextQuestion() {
         let question = data[self.answered.value]
+        self.session?.facade.question = question
         self.questionLabel.text = question.question
         self.collectionView.reloadData()
     }
@@ -113,26 +114,24 @@ final class GameViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Нет", style: .cancel, handler: nil))
         
         self.present(alert, animated: true, completion: nil)
-        
-        
     }
     
     @IBAction func phoneFriendButtonHandler(_ sender: Any) {
-        data[self.answered.value].callFriend()
+        self.session?.facade.useHint(withType: .friend)
         self.phoneFriendButton.isEnabled = false
         self.session?.hints[.friend] = true
         self.collectionView.reloadData()
     }
     
     @IBAction func askAudienceButtonHandler(_ sender: Any) {
-        data[self.answered.value].useAuditoryHelp()
+        self.session?.facade.useHint(withType: .audience)
         self.askAudienceButton.isEnabled = false
         self.session?.hints[.audience] = true
         self.collectionView.reloadData()
     }
     
     @IBAction func fiftyFiftyButtonHandler(_ sender: Any) {
-        data[self.answered.value].use50to50()
+        self.session?.facade.useHint(withType: .exclude)
         self.fiftyFiftyButton.isEnabled = false
         self.session?.hints[.exclude] = true
         self.collectionView.reloadData()

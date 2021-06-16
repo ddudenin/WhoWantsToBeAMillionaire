@@ -9,17 +9,13 @@ import Foundation
 import UIKit
 
 class HintsUsageFacade {
-    let question: Question? = nil
+    var question: Question? = nil
     
-    func callFriend() {
-        
-    }
-    
-    func useAuditoryHelp() {
-        
-    }
-    
-    func use50to50Hint() {
-        
+    func useHint(withType type: Hint) {
+        switch type {
+        case .friend: question?.callFriend()
+        case .audience: question?.useAuditoryHelp()
+        case .exclude: question?.use50to50()
+        }
     }
 }

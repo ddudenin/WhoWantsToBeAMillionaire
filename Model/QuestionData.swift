@@ -10,7 +10,6 @@ import Foundation
 class Question: Codable {
     let question: String
     var answers: [String]
-    
     var answerID = 0
     var friendID = -1
 
