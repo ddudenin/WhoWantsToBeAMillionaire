@@ -104,3 +104,7 @@ let prizes = [
 enum Hint {
     case friend, audience, exclude
 }
+
+enum QuestionsOrder: Int {
+    case predicted, random
+}

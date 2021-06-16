@@ -21,10 +21,13 @@ class AnswerCollectionViewCell: UICollectionViewCell {
         super.prepareForReuse()
         
         self.answerLabel.text = nil
+        self.isUserInteractionEnabled = true
+        self.backgroundColor = UIColor.systemBlue
     }
     
     func setAnswerText(answer text: String) {
         self.answerLabel.text = text
+        self.isUserInteractionEnabled = !text.isEmpty
     }
     
 }

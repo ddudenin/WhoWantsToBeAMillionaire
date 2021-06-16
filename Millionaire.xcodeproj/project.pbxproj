@@ -27,6 +27,10 @@
 		0A4E8E392673EE48009BA65F /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E8E382673EE48009BA65F /* CustomButton.swift */; };
 		0A4E8E3B2673EFF4009BA65F /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E8E3A2673EFF4009BA65F /* Extension.swift */; };
 		0A4E8E3D26740C2F009BA65F /* AnswersCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E8E3C26740C2F009BA65F /* AnswersCollectionViewLayout.swift */; };
+		0A63EF9D2679CF290037B4C6 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A63EF9C2679CF290037B4C6 /* SettingsViewController.swift */; };
+		0A63EFA12679D4910037B4C6 /* PrepareQuestionsStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A63EFA02679D4910037B4C6 /* PrepareQuestionsStrategy.swift */; };
+		0A63EFA32679E3A30037B4C6 /* Observeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A63EFA22679E3A30037B4C6 /* Observeable.swift */; };
+		0A63EFA52679F2F50037B4C6 /* HintsUsageFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A63EFA42679F2F50037B4C6 /* HintsUsageFacade.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +56,10 @@
 		0A4E8E382673EE48009BA65F /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		0A4E8E3A2673EFF4009BA65F /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		0A4E8E3C26740C2F009BA65F /* AnswersCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswersCollectionViewLayout.swift; sourceTree = "<group>"; };
+		0A63EF9C2679CF290037B4C6 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		0A63EFA02679D4910037B4C6 /* PrepareQuestionsStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepareQuestionsStrategy.swift; sourceTree = "<group>"; };
+		0A63EFA22679E3A30037B4C6 /* Observeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observeable.swift; sourceTree = "<group>"; };
+		0A63EFA42679F2F50037B4C6 /* HintsUsageFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintsUsageFacade.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +84,7 @@
 		0A2A30FE2673A70100661BE6 = {
 			isa = PBXGroup;
 			children = (
+				0A63EF9E2679D19E0037B4C6 /* Fundamental */,
 				0A204BE22674EA9700B9E41D /* Components */,
 				0A4E8E372673EE1B009BA65F /* UI */,
 				0A4E8E3C26740C2F009BA65F /* AnswersCollectionViewLayout.swift */,
@@ -111,6 +120,7 @@
 				0A2A311F2673ACC200661BE6 /* HomeViewController.swift */,
 				0A2A31242673B92A00661BE6 /* GameViewController.swift */,
 				0A204BE72674EE1900B9E41D /* RecordsTableViewController.swift */,
+				0A63EF9C2679CF290037B4C6 /* SettingsViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -119,9 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				0A2A31272673B9F200661BE6 /* QuestionData.swift */,
-				0A204BE52674EBE500B9E41D /* GameSession.swift */,
 				0A204BF3267537FF00B9E41D /* RecordData.swift */,
-				0A204BF52675387500B9E41D /* RecordsCareTaker.swift */,
 				0A1B9B222676290C00F9EB84 /* GameData.swift */,
 			);
 			path = Model;
@@ -147,6 +155,18 @@
 				0A2A311E2673ACAB00661BE6 /* Screens */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		0A63EF9E2679D19E0037B4C6 /* Fundamental */ = {
+			isa = PBXGroup;
+			children = (
+				0A63EFA02679D4910037B4C6 /* PrepareQuestionsStrategy.swift */,
+				0A204BF52675387500B9E41D /* RecordsCareTaker.swift */,
+				0A204BE52674EBE500B9E41D /* GameSession.swift */,
+				0A63EFA22679E3A30037B4C6 /* Observeable.swift */,
+				0A63EFA42679F2F50037B4C6 /* HintsUsageFacade.swift */,
+			);
+			path = Fundamental;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,13 +244,17 @@
 				0A2A312C2673CADC00661BE6 /* AnswerCollectionViewCell.swift in Sources */,
 				0A1B9B232676290C00F9EB84 /* GameData.swift in Sources */,
 				0A204BF4267537FF00B9E41D /* RecordData.swift in Sources */,
+				0A63EFA52679F2F50037B4C6 /* HintsUsageFacade.swift in Sources */,
 				0A204BE82674EE1900B9E41D /* RecordsTableViewController.swift in Sources */,
 				0A204BF1267536FE00B9E41D /* RecordTableViewCell.swift in Sources */,
 				0A204BF62675387500B9E41D /* RecordsCareTaker.swift in Sources */,
 				0A2A310B2673A70100661BE6 /* AppDelegate.swift in Sources */,
+				0A63EF9D2679CF290037B4C6 /* SettingsViewController.swift in Sources */,
 				0A2A31282673B9F200661BE6 /* QuestionData.swift in Sources */,
 				0A4E8E3B2673EFF4009BA65F /* Extension.swift in Sources */,
+				0A63EFA12679D4910037B4C6 /* PrepareQuestionsStrategy.swift in Sources */,
 				0A4E8E392673EE48009BA65F /* CustomButton.swift in Sources */,
+				0A63EFA32679E3A30037B4C6 /* Observeable.swift in Sources */,
 				0A4E8E3D26740C2F009BA65F /* AnswersCollectionViewLayout.swift in Sources */,
 				0A2A310D2673A70100661BE6 /* SceneDelegate.swift in Sources */,
 				0A2A31252673B92A00661BE6 /* GameViewController.swift in Sources */,

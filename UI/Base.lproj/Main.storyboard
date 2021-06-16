@@ -24,7 +24,7 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="jqZ-JD-DC6">
-                                <rect key="frame" x="12" y="444" width="390" height="92"/>
+                                <rect key="frame" x="12" y="444" width="390" height="142"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RIB-QN-p7p" customClass="CustomButton" customModule="Millionaire" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="36"/>
@@ -58,6 +58,22 @@
                                             <segue destination="Sag-HN-6h3" kind="show" id="MXk-8I-jyo"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QSG-rz-MW5" customClass="CustomButton" customModule="Millionaire" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="112" width="390" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
+                                                <color key="value" red="0.074509803920000006" green="0.058823529409999999" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="Настройки"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="Atf-82-XXS" kind="show" id="PYz-r0-XhX"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -76,7 +92,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="152" y="31"/>
+            <point key="canvasLocation" x="0.0" y="392"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="Pwv-a8-pIg">
@@ -94,8 +110,14 @@
                                     <action selector="homeButtonHandler:" destination="AZ5-t0-ejr" eventType="touchUpInside" id="Hw6-cf-Pit"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nYz-H8-CZI">
+                                <rect key="frame" x="186.5" y="166" width="41.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemYellowColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="tMs-n7-bFd">
-                                <rect key="frame" x="20" y="256.5" width="374" height="585.5"/>
+                                <rect key="frame" x="20" y="277" width="374" height="565"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewLayout key="collectionViewLayout" id="Ldn-zA-mXW" customClass="AnswersCollectionViewLayout" customModule="Millionaire" customModuleProvider="target"/>
                                 <cells>
@@ -110,7 +132,7 @@
                                 </cells>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mrk-t3-9KW">
-                                <rect key="frame" x="20" y="216" width="374" height="20.5"/>
+                                <rect key="frame" x="20" y="236.5" width="374" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -157,12 +179,14 @@
                             <constraint firstItem="tMs-n7-bFd" firstAttribute="top" secondItem="Mrk-t3-9KW" secondAttribute="bottom" constant="20" id="100-te-6aG"/>
                             <constraint firstItem="OQi-G1-Fxf" firstAttribute="bottom" secondItem="tMs-n7-bFd" secondAttribute="bottom" constant="20" id="3no-co-5zG"/>
                             <constraint firstItem="Mrk-t3-9KW" firstAttribute="leading" secondItem="OQi-G1-Fxf" secondAttribute="leading" constant="20" id="9Uu-Tp-8Zc"/>
+                            <constraint firstItem="Mrk-t3-9KW" firstAttribute="top" secondItem="nYz-H8-CZI" secondAttribute="bottom" constant="50" id="9oL-1n-176"/>
                             <constraint firstItem="J1D-PK-Mjr" firstAttribute="top" secondItem="OQi-G1-Fxf" secondAttribute="top" constant="20" id="Aho-fF-alR"/>
                             <constraint firstItem="tii-v6-arA" firstAttribute="centerY" secondItem="tN9-iE-jb8" secondAttribute="centerY" id="G7S-Yy-5m2"/>
                             <constraint firstItem="tii-v6-arA" firstAttribute="leading" secondItem="OQi-G1-Fxf" secondAttribute="leading" constant="20" id="Iks-tY-ca1"/>
                             <constraint firstItem="OQi-G1-Fxf" firstAttribute="trailing" secondItem="tMs-n7-bFd" secondAttribute="trailing" constant="20" id="LzS-J5-O11"/>
                             <constraint firstItem="tMs-n7-bFd" firstAttribute="leading" secondItem="OQi-G1-Fxf" secondAttribute="leading" constant="20" id="MHE-ee-knu"/>
-                            <constraint firstItem="Mrk-t3-9KW" firstAttribute="top" secondItem="tN9-iE-jb8" secondAttribute="bottom" constant="100" id="a4F-Fb-vgQ"/>
+                            <constraint firstItem="nYz-H8-CZI" firstAttribute="centerX" secondItem="OQi-G1-Fxf" secondAttribute="centerX" id="Uuj-mt-Sl1"/>
+                            <constraint firstItem="nYz-H8-CZI" firstAttribute="top" secondItem="tN9-iE-jb8" secondAttribute="bottom" constant="50" id="cTK-Y1-iJW"/>
                             <constraint firstItem="J1D-PK-Mjr" firstAttribute="centerX" secondItem="YCC-fH-4cC" secondAttribute="centerX" id="hvt-yN-w5g"/>
                             <constraint firstItem="tN9-iE-jb8" firstAttribute="top" secondItem="J1D-PK-Mjr" secondAttribute="bottom" constant="10" id="iA7-RS-zFW"/>
                             <constraint firstItem="OQi-G1-Fxf" firstAttribute="trailing" secondItem="Mrk-t3-9KW" secondAttribute="trailing" constant="20" id="up5-nh-bS8"/>
@@ -175,6 +199,7 @@
                         <outlet property="fiftyFiftyButton" destination="IkR-X7-pEP" id="UwU-Aw-Vxa"/>
                         <outlet property="phoneFriendButton" destination="rjT-yM-R3E" id="H4N-tz-a2E"/>
                         <outlet property="questionLabel" destination="Mrk-t3-9KW" id="oc3-U2-CDN"/>
+                        <outlet property="scoreLabel" destination="nYz-H8-CZI" id="TEb-U5-sbS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0K2-gh-Iid" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -198,7 +223,7 @@
             </objects>
             <point key="canvasLocation" x="943" y="392"/>
         </scene>
-        <!--Records Table View Controller-->
+        <!--Таблица рекордов-->
         <scene sceneID="yQF-MN-kFn">
             <objects>
                 <tableViewController storyboardIdentifier="recordsScreen" id="g4h-j8-Cw3" customClass="RecordsTableViewController" customModule="Millionaire" customModuleProvider="target" sceneMemberID="viewController">
@@ -221,7 +246,7 @@
                             <outlet property="delegate" destination="g4h-j8-Cw3" id="wO4-5h-4Dv"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="0Dv-0y-sth">
+                    <navigationItem key="navigationItem" title="Таблица рекордов" id="0Dv-0y-sth">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="trash.circle.fill" catalog="system" id="Lv0-gn-Xvb">
                             <connections>
                                 <action selector="removeAllButtonHandler:" destination="g4h-j8-Cw3" id="pr7-NF-VTE"/>
@@ -233,24 +258,95 @@
             </objects>
             <point key="canvasLocation" x="1699" y="393"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Cpz-Kj-uXE">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AFg-R1-d7g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController modalPresentationStyle="fullScreen" id="Atf-82-XXS" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="E8G-OA-yJD"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tGU-sN-sBz">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="1rM-l6-zG4" kind="relationship" relationship="rootViewController" id="gMR-ZG-yh0"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="942" y="1102"/>
+        </scene>
+        <!--Настройки игры-->
+        <scene sceneID="Z7e-pI-DnR">
+            <objects>
+                <viewController definesPresentationContext="YES" modalPresentationStyle="fullScreen" id="1rM-l6-zG4" customClass="SettingsViewController" customModule="Millionaire" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="K0q-mc-JpQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7Vq-hE-ccT">
+                                <rect key="frame" x="20" y="401.5" width="374" height="61.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Порядок вопросов" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SWu-lJ-gQ6">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="nMR-7H-zow">
+                                        <rect key="frame" x="0.0" y="30.5" width="374" height="32"/>
+                                        <segments>
+                                            <segment title="Прямой"/>
+                                            <segment title="Случайный"/>
+                                        </segments>
+                                    </segmentedControl>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="VAw-8I-kCl"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="7Vq-hE-ccT" firstAttribute="centerY" secondItem="VAw-8I-kCl" secondAttribute="centerY" id="TZL-xY-Ym1"/>
+                            <constraint firstItem="VAw-8I-kCl" firstAttribute="trailing" secondItem="7Vq-hE-ccT" secondAttribute="trailing" constant="20" id="s2V-h0-tdD"/>
+                            <constraint firstItem="7Vq-hE-ccT" firstAttribute="leading" secondItem="VAw-8I-kCl" secondAttribute="leading" constant="20" id="wzz-Sn-cjU"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Настройки игры" id="zqr-iq-7c4">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="chevron.backward.circle.fill" catalog="system" id="cpR-6q-tuO">
+                            <connections>
+                                <action selector="homeButtonHandler:" destination="1rM-l6-zG4" id="lUo-HI-6FI"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="orderSegmentedControl" destination="nMR-7H-zow" id="TaU-uy-54a"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hES-Lo-cat" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1699" y="1102"/>
+        </scene>
     </scenes>
     <designables>
         <designable name="K50-hb-Xj9">
-            <size key="intrinsicContentSize" width="30" height="36"/>
+            <size key="intrinsicContentSize" width="81" height="36"/>
         </designable>
         <designable name="RIB-QN-p7p">
-            <size key="intrinsicContentSize" width="30" height="36"/>
+            <size key="intrinsicContentSize" width="65" height="36"/>
         </designable>
     </designables>
     <resources>
         <image name="50.circle.fill" catalog="system" width="128" height="121"/>
         <image name="MainLogo" width="890" height="890"/>
         <image name="arrowtriangle.backward.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="chevron.backward.circle.fill" catalog="system" width="128" height="121"/>
         <image name="person.3.fill" catalog="system" width="128" height="61"/>
         <image name="phone.circle.fill" catalog="system" width="128" height="121"/>
         <image name="trash.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

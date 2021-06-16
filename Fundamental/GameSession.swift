@@ -11,6 +11,7 @@ class Game {
     static let instance: Game = Game()
     
     var session: GameSession?
+    var order: QuestionsOrder = .predicted
     private(set) var records: [Record] = []
     private var recordsCareTaker: GameCareTaker
     
@@ -39,6 +40,7 @@ class Game {
 
 struct GameSession {
     var hints: [Hint : Bool] = [.friend : false, .audience : false, .exclude : false]
+    var facade: HintsUsageFacade?
     var userBreak = false
     var answered = 0
 }
