@@ -84,10 +84,7 @@ final class GameViewController: UIViewController {
     private func setGradientBackground() {
         let gradient = CAGradientLayer()
         
-        let startColor = UIColor(hexString: "#1e3b70").cgColor
-        let endColor = UIColor(hexString: "#29539b").cgColor
-        
-        gradient.colors = [startColor, endColor]
+        gradient.colors = [UIColor.startGradient.cgColor, UIColor.endGradient.cgColor]
         gradient.locations = [0.0 , 1.0]
         gradient.startPoint = CGPoint(x: 0.0, y: 0.0)
         gradient.endPoint = CGPoint(x: 1.0, y: 1.0)

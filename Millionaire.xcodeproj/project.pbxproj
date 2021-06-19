@@ -95,8 +95,6 @@
 				0A63EF9E2679D19E0037B4C6 /* Fundamental */,
 				0A204BE22674EA9700B9E41D /* Components */,
 				0A4E8E372673EE1B009BA65F /* UI */,
-				0A4E8E3C26740C2F009BA65F /* AnswersCollectionViewLayout.swift */,
-				0A4E8E382673EE48009BA65F /* CustomButton.swift */,
 				0A2A31262673B9D100661BE6 /* Model */,
 				0A2A31092673A70100661BE6 /* Millionaire */,
 				0A2A31082673A70100661BE6 /* Products */,
@@ -164,6 +162,8 @@
 				0A2A31152673A70200661BE6 /* LaunchScreen.storyboard */,
 				0A2A31292673CAB800661BE6 /* Cells */,
 				0A2A311E2673ACAB00661BE6 /* Screens */,
+				0A4E8E3C26740C2F009BA65F /* AnswersCollectionViewLayout.swift */,
+				0A4E8E382673EE48009BA65F /* CustomButton.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";

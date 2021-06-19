@@ -27,16 +27,24 @@ final class AddQuestionsViewController: UIViewController {
         self.tableView.register(UINib(nibName: "QuestionTableViewCell", bundle: .none), forCellReuseIdentifier: "newQuestionCell")
     }
     
+    @IBAction func deleteAllUserQuestionsHandler(_ sender: Any) {
+        Game.instance.removeAllUserQuestions()
+    }
+    
     @IBAction func addButtonHandler(_ sender: Any) {
         self.questionsBuilder.addNewQuestion()
         self.tableView.reloadData()
     }
     
     @IBAction func doneButtonHandler(_ sender: Any) {
+        guard !self.questionsBuilder.questions.isEmpty else {
+            self.dismiss(animated: true)
+            return
+        }
+        
         do {
             let questions = try questionsBuilder.build()
             Game.instance.addQuestions(questions)
-            self.dismiss(animated: true)
         } catch {
             displayMissingInputsAlert()
         }
@@ -68,6 +76,13 @@ extension AddQuestionsViewController: UITableViewDelegate, UITableViewDataSource
         let question = self.questionsBuilder.questions[indexPath.row]
         cell.configure(withQuestion: question.question, answers: question.answers, delegate: self)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            self.questionsBuilder.removeQuestion(at: indexPath.row)
+            self.tableView.reloadData()
+        }
     }
 }
 

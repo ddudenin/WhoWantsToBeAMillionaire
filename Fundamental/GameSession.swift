@@ -51,6 +51,12 @@ class Game {
     
     func removeAllRecords() {
         self.records = []
+        try? self.gameCareTaker.save(self.records)
+    }
+    
+    func removeAllUserQuestions() {
+        self.questions = []
+        try? self.gameCareTaker.save(self.questions)
     }
 }
 

@@ -42,8 +42,12 @@ class QuestionGroupBuilder {
     private(set) var questions = [QuestionBuilder]()
     
     func addNewQuestion() {
-      let question = QuestionBuilder()
-      questions.append(question)
+        let question = QuestionBuilder()
+        self.questions.append(question)
+    }
+    
+    func removeQuestion(at index: Int) {
+        self.questions.remove(at: index)
     }
     
     func build() throws -> [Question] {

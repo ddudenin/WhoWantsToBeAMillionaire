@@ -29,19 +29,29 @@ final class QuestionTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         self.questionTextField.tag = TextFieldData.question.rawValue
-        self.questionTextField.addTarget(self, action: #selector(valueChanged), for: .editingDidEnd)
+        self.questionTextField.addTarget(self, action: #selector(valueChanged), for: .valueChanged)
         
         self.correctAnswerTextField.tag = TextFieldData.answer1.rawValue
-        self.correctAnswerTextField.addTarget(self, action: #selector(valueChanged), for: .editingDidEnd)
+        self.correctAnswerTextField.addTarget(self, action: #selector(valueChanged), for: .valueChanged)
         
         self.answer2TextField.tag = TextFieldData.answer2.rawValue
-        self.answer2TextField.addTarget(self, action: #selector(valueChanged), for: .editingDidEnd)
+        self.answer2TextField.addTarget(self, action: #selector(valueChanged), for: .valueChanged)
         
         self.answer3TextField.tag = TextFieldData.answer3.rawValue
-        self.answer3TextField.addTarget(self, action: #selector(valueChanged), for: .editingDidEnd)
+        self.answer3TextField.addTarget(self, action: #selector(valueChanged), for: .valueChanged)
         
         self.answer4TextField.tag = TextFieldData.answer4.rawValue
-        self.answer4TextField.addTarget(self, action: #selector(valueChanged), for: .editingDidEnd)
+        self.answer4TextField.addTarget(self, action: #selector(valueChanged), for: .valueChanged)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        self.questionTextField.text = nil
+        self.correctAnswerTextField.text = nil
+        self.answer2TextField.text = nil
+        self.answer3TextField.text = nil
+        self.answer4TextField.text = nil
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
