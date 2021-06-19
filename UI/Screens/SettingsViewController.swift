@@ -24,7 +24,7 @@ final class SettingsViewController: UIViewController {
     }
     
     @IBAction func homeButtonHandler(_ sender: Any) {
-        self.game.order = self.order
+        self.game.setOrder(self.order)
         self.dismiss(animated: true)
     }
 }

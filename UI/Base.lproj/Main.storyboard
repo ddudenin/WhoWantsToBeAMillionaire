@@ -24,7 +24,7 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="jqZ-JD-DC6">
-                                <rect key="frame" x="12" y="444" width="390" height="142"/>
+                                <rect key="frame" x="12" y="394" width="390" height="204"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RIB-QN-p7p" customClass="CustomButton" customModule="Millionaire" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="36"/>
@@ -59,7 +59,8 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QSG-rz-MW5" customClass="CustomButton" customModule="Millionaire" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="112" width="390" height="30"/>
+                                        <rect key="frame" x="0.0" y="112" width="390" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Button"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
@@ -74,6 +75,22 @@
                                             <segue destination="Atf-82-XXS" kind="show" id="PYz-r0-XhX"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m6g-Av-8E6" customClass="CustomButton" customModule="Millionaire" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="168" width="390" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
+                                                <color key="value" red="0.074509803920000006" green="0.058823529409999999" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="Добавить вопрос"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="zDp-gY-887" kind="show" id="ywM-xG-T35"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -84,7 +101,7 @@
                             <constraint firstItem="5av-LL-Q7b" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="BVI-0d-ngF"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5av-LL-Q7b" secondAttribute="trailing" constant="20" id="DOt-Ua-hmj"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jqZ-JD-DC6" secondAttribute="trailing" constant="12" id="LZq-V9-Zg6"/>
-                            <constraint firstItem="jqZ-JD-DC6" firstAttribute="top" secondItem="5av-LL-Q7b" secondAttribute="bottom" constant="100" id="Nlp-qd-Exk"/>
+                            <constraint firstItem="jqZ-JD-DC6" firstAttribute="top" secondItem="5av-LL-Q7b" secondAttribute="bottom" constant="50" id="Nlp-qd-Exk"/>
                             <constraint firstItem="jqZ-JD-DC6" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="TLl-Jw-w6q"/>
                             <constraint firstItem="5av-LL-Q7b" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="j3M-Hx-G3h"/>
                         </constraints>
@@ -92,7 +109,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="392"/>
+            <point key="canvasLocation" x="75" y="743"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="Pwv-a8-pIg">
@@ -261,7 +278,6 @@
         <!--Navigation Controller-->
         <scene sceneID="Cpz-Kj-uXE">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="AFg-R1-d7g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController modalPresentationStyle="fullScreen" id="Atf-82-XXS" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="E8G-OA-yJD"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="tGU-sN-sBz">
@@ -272,6 +288,7 @@
                         <segue destination="1rM-l6-zG4" kind="relationship" relationship="rootViewController" id="gMR-ZG-yh0"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AFg-R1-d7g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="942" y="1102"/>
         </scene>
@@ -325,13 +342,95 @@
             </objects>
             <point key="canvasLocation" x="1699" y="1102"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="udX-kJ-G8Z">
+            <objects>
+                <navigationController modalPresentationStyle="fullScreen" id="zDp-gY-887" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="25p-N7-E5F"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ABS-2e-A2H">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="nl1-Rt-McT" kind="relationship" relationship="rootViewController" id="J7V-20-Nu0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lr7-wW-gy2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="942" y="1787"/>
+        </scene>
+        <!--Add Questions View Controller-->
+        <scene sceneID="6tr-sI-zuk">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="nl1-Rt-McT" customClass="AddQuestionsViewController" customModule="Millionaire" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cwf-tg-Ldk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tvn-Lc-dEI">
+                                <rect key="frame" x="20" y="126" width="374" height="630"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="newQuestionCell" id="oZg-ci-TVV">
+                                        <rect key="frame" x="0.0" y="24.5" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oZg-ci-TVV" id="FVq-IN-S8q">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JTB-MI-PD3">
+                                <rect key="frame" x="198" y="776" width="18" height="22"/>
+                                <state key="normal" image="plus" catalog="system"/>
+                                <connections>
+                                    <action selector="addButtonHandler:" destination="nl1-Rt-McT" eventType="touchUpInside" id="SfW-OY-tfn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CjX-Nu-3yb">
+                                <rect key="frame" x="346" y="76" width="48" height="30"/>
+                                <state key="normal" title="Готово"/>
+                                <connections>
+                                    <action selector="doneButtonHandler:" destination="nl1-Rt-McT" eventType="touchUpInside" id="0qV-9h-GP4"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="au4-M8-ZXH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="tvn-Lc-dEI" firstAttribute="leading" secondItem="au4-M8-ZXH" secondAttribute="leading" constant="20" id="3px-Fq-Wka"/>
+                            <constraint firstItem="au4-M8-ZXH" firstAttribute="trailing" secondItem="tvn-Lc-dEI" secondAttribute="trailing" constant="20" id="3wr-tB-qin"/>
+                            <constraint firstItem="au4-M8-ZXH" firstAttribute="bottom" secondItem="JTB-MI-PD3" secondAttribute="bottom" constant="10" id="46G-7l-RyX"/>
+                            <constraint firstItem="JTB-MI-PD3" firstAttribute="centerX" secondItem="au4-M8-ZXH" secondAttribute="centerX" id="Ltz-RS-fkW"/>
+                            <constraint firstItem="CjX-Nu-3yb" firstAttribute="top" secondItem="au4-M8-ZXH" secondAttribute="top" constant="20" id="h1R-tB-MU5"/>
+                            <constraint firstItem="tvn-Lc-dEI" firstAttribute="top" secondItem="CjX-Nu-3yb" secondAttribute="bottom" constant="20" id="lz7-kC-eCb"/>
+                            <constraint firstItem="JTB-MI-PD3" firstAttribute="top" secondItem="tvn-Lc-dEI" secondAttribute="bottom" constant="20" id="s7q-Kw-8yM"/>
+                            <constraint firstItem="au4-M8-ZXH" firstAttribute="trailing" secondItem="CjX-Nu-3yb" secondAttribute="trailing" constant="20" id="zUJ-ZC-mU8"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="o1D-KO-ehq"/>
+                    <connections>
+                        <outlet property="tableView" destination="tvn-Lc-dEI" id="ONH-jC-DUM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kaN-gz-82u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1698.5507246376812" y="1786.6071428571427"/>
+        </scene>
     </scenes>
     <designables>
         <designable name="K50-hb-Xj9">
             <size key="intrinsicContentSize" width="81" height="36"/>
         </designable>
+        <designable name="QSG-rz-MW5">
+            <size key="intrinsicContentSize" width="101" height="36"/>
+        </designable>
         <designable name="RIB-QN-p7p">
             <size key="intrinsicContentSize" width="65" height="36"/>
+        </designable>
+        <designable name="m6g-Av-8E6">
+            <size key="intrinsicContentSize" width="160" height="36"/>
         </designable>
     </designables>
     <resources>
@@ -341,6 +440,7 @@
         <image name="chevron.backward.circle.fill" catalog="system" width="128" height="121"/>
         <image name="person.3.fill" catalog="system" width="128" height="61"/>
         <image name="phone.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <image name="trash.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
