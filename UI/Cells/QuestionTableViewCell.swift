@@ -8,15 +8,11 @@
 import UIKit
 
 enum TextFieldData: Int {
-    case question = 0
+    case question = -1
     case answer1
     case answer2
     case answer3
     case answer4
-}
-
-protocol TableViewCellDelegate {
-    func report(textField: UITextField, in cell: UITableViewCell)
 }
 
 final class QuestionTableViewCell: UITableViewCell {
@@ -27,7 +23,7 @@ final class QuestionTableViewCell: UITableViewCell {
     @IBOutlet private weak var answer3TextField: UITextField!
     @IBOutlet private weak var answer4TextField: UITextField!
     
-    private var delegate: TableViewCellDelegate?
+    private var delegate: UpdateQuestionDataDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -54,17 +50,17 @@ final class QuestionTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configure(withData data: [String], delegate: TableViewCellDelegate) {
-        self.questionTextField.text = data[TextFieldData.question.rawValue]
-        self.correctAnswerTextField.text = data[TextFieldData.answer1.rawValue]
-        self.answer2TextField.text = data[TextFieldData.answer2.rawValue]
-        self.answer3TextField.text = data[TextFieldData.answer3.rawValue]
-        self.answer4TextField.text = data[TextFieldData.answer4.rawValue]
+    func configure(withQuestion text: String, answers: [String], delegate: UpdateQuestionDataDelegate) {
+        self.questionTextField.text = text
+        self.correctAnswerTextField.text = answers[TextFieldData.answer1.rawValue]
+        self.answer2TextField.text = answers[TextFieldData.answer2.rawValue]
+        self.answer3TextField.text = answers[TextFieldData.answer3.rawValue]
+        self.answer4TextField.text = answers[TextFieldData.answer4.rawValue]
         
         self.delegate = delegate
     }
     
     @objc private func valueChanged(_ textField: UITextField){
-        self.delegate?.report(textField: textField, in: self)
+        self.delegate?.update(textField: textField, in: self)
     }
 }

@@ -13,23 +13,20 @@ class Game {
     var session: GameSession?
     private(set) var order: QuestionsOrder
     private(set) var records: [Record]
+    private(set) var questions: [Question]
     private var gameCareTaker: GameCareTaker
     
     private init() {
         self.gameCareTaker = GameCareTaker()
         self.order = .predicted
         self.records = []
+        self.questions = []
     }
     
     func restoreState() {
         self.records = (try? self.gameCareTaker.loadRecords()) ?? []
         self.order = (try? self.gameCareTaker.loadOrder()) ?? .predicted
-        
-        let questions = (try? self.gameCareTaker.loadQuestions()) ?? []
-        
-        if !questions.isEmpty {
-            questionsDB[.easy]?.append(contentsOf: questions)
-        }
+        self.questions = (try? self.gameCareTaker.loadQuestions()) ?? []
     }
     
     func addRecord(_ record: Record) {
@@ -42,11 +39,16 @@ class Game {
         try? self.gameCareTaker.save(self.records)
     }
     
+    func addQuestions(_ questions: [Question]) {
+        self.questions.append(contentsOf: questions)
+        try? self.gameCareTaker.save(self.questions)
+    }
+    
     func setOrder(_ order: QuestionsOrder) {
         self.order = order
         try? self.gameCareTaker.save(self.order)
     }
-        
+    
     func removeAllRecords() {
         self.records = []
     }

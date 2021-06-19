@@ -15,7 +15,19 @@ struct PredictedOrderQuestionsStrategy: PrepareQuestionsStrtegy {
     func prepareQuestions(for difficulty: Dificulty) -> [Question] {
         var questions: [Question] = []
         
-        guard let category = questionsDB[difficulty] else { return questions }
+        guard var category = questionsDB[difficulty] else { return questions }
+        
+        if(difficulty == .easy) {
+            let count = category.count
+            
+            let usersQuestions = Game.instance.questions
+            
+            if !usersQuestions.isEmpty {
+                category += usersQuestions
+                category.shuffle()
+                category = Array(category.prefix(count))
+            }
+        }
         
         for question in category {
             var answers = question.answers
@@ -33,8 +45,21 @@ struct RandomOrderQuestionsStrategy: PrepareQuestionsStrtegy {
         var questions: [Question] = []
         
         guard var category = questionsDB[difficulty] else { return questions }
-        category.shuffle()
         
+        if(difficulty == .easy) {
+            let count = category.count
+            
+            let usersQuestions = Game.instance.questions
+            
+            if !usersQuestions.isEmpty {
+                category += usersQuestions
+                category.shuffle()
+                category = Array(category.prefix(count))
+            }
+        } else {
+            category.shuffle()
+        }
+
         for question in category {
             var answers = question.answers
             let index = Int.random(in: 0..<answers.count)

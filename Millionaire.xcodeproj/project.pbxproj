@@ -14,6 +14,7 @@
 		0A204BF2267536FE00B9E41D /* RecordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A204BF0267536FE00B9E41D /* RecordTableViewCell.xib */; };
 		0A204BF4267537FF00B9E41D /* RecordData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A204BF3267537FF00B9E41D /* RecordData.swift */; };
 		0A204BF62675387500B9E41D /* CareTaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A204BF52675387500B9E41D /* CareTaker.swift */; };
+		0A253D31267E4FB800AC6705 /* QuestionsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A253D30267E4FB800AC6705 /* QuestionsBuilder.swift */; };
 		0A2A310B2673A70100661BE6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2A310A2673A70100661BE6 /* AppDelegate.swift */; };
 		0A2A310D2673A70100661BE6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2A310C2673A70100661BE6 /* SceneDelegate.swift */; };
 		0A2A31122673A70100661BE6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A2A31102673A70100661BE6 /* Main.storyboard */; };
@@ -44,6 +45,7 @@
 		0A204BF0267536FE00B9E41D /* RecordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordTableViewCell.xib; sourceTree = "<group>"; };
 		0A204BF3267537FF00B9E41D /* RecordData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordData.swift; sourceTree = "<group>"; };
 		0A204BF52675387500B9E41D /* CareTaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareTaker.swift; sourceTree = "<group>"; };
+		0A253D30267E4FB800AC6705 /* QuestionsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsBuilder.swift; sourceTree = "<group>"; };
 		0A2A31072673A70100661BE6 /* Millionaire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Millionaire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A2A310A2673A70100661BE6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A2A310C2673A70100661BE6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				0A63EFA22679E3A30037B4C6 /* Observeable.swift */,
 				0A63EFA42679F2F50037B4C6 /* HintsUsageFacade.swift */,
 				0A204BF52675387500B9E41D /* CareTaker.swift */,
+				0A253D30267E4FB800AC6705 /* QuestionsBuilder.swift */,
 			);
 			path = Fundamental;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				0A204BF4267537FF00B9E41D /* RecordData.swift in Sources */,
 				0A63EFA52679F2F50037B4C6 /* HintsUsageFacade.swift in Sources */,
 				0A204BE82674EE1900B9E41D /* RecordsTableViewController.swift in Sources */,
+				0A253D31267E4FB800AC6705 /* QuestionsBuilder.swift in Sources */,
 				0A204BF1267536FE00B9E41D /* RecordTableViewCell.swift in Sources */,
 				0AC542CE267BD0FB0032BB62 /* QuestionTableViewCell.swift in Sources */,
 				0A204BF62675387500B9E41D /* CareTaker.swift in Sources */,
