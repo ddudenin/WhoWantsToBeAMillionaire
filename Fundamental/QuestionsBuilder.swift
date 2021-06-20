@@ -13,7 +13,11 @@ class QuestionBuilder {
     
     func build() throws -> Question {
         guard !self.question.isEmpty else { throw Error.missingQuestion }
-        guard !self.answers.contains(where: { $0.isEmpty }) else { throw Error.missingAnswers }
+        
+        guard !self.answers.contains(where: { $0.isEmpty }) else {
+            throw Error.missingAnswers
+        }
+        
         return Question(question: self.question, answers: self.answers)
     }
     
@@ -51,9 +55,7 @@ class QuestionGroupBuilder {
     }
     
     func build() throws -> [Question] {
-        guard self.questions.count > 0 else {
-            throw Error.missingQuestions
-        }
+        guard self.questions.count > 0 else { throw Error.missingQuestions }
         
         let userQuestions = try self.questions.map { try $0.build() }
         return userQuestions
