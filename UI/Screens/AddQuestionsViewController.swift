@@ -79,7 +79,8 @@ extension AddQuestionsViewController: UITableViewDelegate, UITableViewDataSource
         if row >= 0, row < self.questionsBuilder.questions.count {
             let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! QuestionTableViewCell
             let question = self.questionsBuilder.questions[indexPath.row]
-            cell.configure(withQuestion: question.question, answers: question.answers, delegate: self)
+            cell.delegate = self
+            cell.configure(withQuestion: question.question, answers: question.answers)
             return cell
         } else {
             return tableView.dequeueReusableCell(withIdentifier: "AddQuestionCell", for: indexPath)
@@ -99,10 +100,12 @@ extension AddQuestionsViewController: UITableViewDelegate, UITableViewDataSource
         guard isLastIndexPath(indexPath) else { return }
         self.questionsBuilder.addNewQuestion()
         self.tableView.insertRows(at: [indexPath], with: .top)
+        self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
     }
     
     private func isLastIndexPath(_ indexPath: IndexPath) -> Bool {
-        return indexPath.row == self.tableView.numberOfRows(inSection: indexPath.section) - 1
+        return indexPath.row ==
+            self.tableView.numberOfRows(inSection: indexPath.section) - 1
     }
 }
 

@@ -23,7 +23,7 @@ final class QuestionTableViewCell: UITableViewCell {
     @IBOutlet private weak var answer3TextField: UITextField!
     @IBOutlet private weak var answer4TextField: UITextField!
     
-    private var delegate: UpdateQuestionDataDelegate?
+    var delegate: UpdateQuestionDataDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -60,14 +60,12 @@ final class QuestionTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configure(withQuestion text: String, answers: [String], delegate: UpdateQuestionDataDelegate) {
+    func configure(withQuestion text: String, answers: [String]) {
         self.questionTextField.text = text
         self.correctAnswerTextField.text = answers[TextFieldData.answer1.rawValue]
         self.answer2TextField.text = answers[TextFieldData.answer2.rawValue]
         self.answer3TextField.text = answers[TextFieldData.answer3.rawValue]
         self.answer4TextField.text = answers[TextFieldData.answer4.rawValue]
-        
-        self.delegate = delegate
     }
     
     @objc private func valueChanged(_ textField: UITextField){
