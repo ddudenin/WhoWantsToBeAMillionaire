@@ -60,11 +60,33 @@ class Game {
     }
 }
 
-struct GameSession {
+protocol GameSessionDelegate: AnyObject {
+    func nextQuestion(question: Question)
+    func applyHint(hint type: Hint)
+    func setUserBreak()
+}
+
+class GameSession {
     var hints: [Hint : Bool] = [.friend : false, .audience : false, .exclude : false]
     var facade = HintsUsageFacade()
     var userBreak = false
-    var answered = 0
+    var answered = -1
 }
 
+extension GameSession : GameSessionDelegate {
+    
+    func nextQuestion(question: Question) {
+        self.facade.question = question
+        self.answered += 1
+    }
+    
+    func applyHint(hint type: Hint) {
+        self.hints[type] = true
+        self.facade.useHint(withType: type)
+    }
+    
+    func setUserBreak() {
+        self.userBreak = true
+    }
+}
 

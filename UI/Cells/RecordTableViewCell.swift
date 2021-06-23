@@ -32,7 +32,7 @@ class RecordTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configue(withRecord record: Record) {
+    func configue(with record: Record) {
         self.answersCountLabel.text = "Правильных ответов \(record.answered)"
         self.prizeLabel.text = "Выигрыш \(record.prize)$"
         self.dateLabel.text =  DateFormatter.localizedString(from: record.date, dateStyle: .medium, timeStyle: .short)

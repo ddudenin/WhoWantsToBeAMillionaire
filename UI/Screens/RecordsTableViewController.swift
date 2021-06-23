@@ -29,7 +29,8 @@ final class RecordsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recordCell", for: indexPath) as! RecordTableViewCell
-        cell.configue(withRecord: self.game.records[indexPath.row])
+        let record = self.game.records[indexPath.row]
+        cell.configue(with: record)
         return cell
     }
     

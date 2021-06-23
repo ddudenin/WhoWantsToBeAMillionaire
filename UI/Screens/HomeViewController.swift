@@ -16,10 +16,11 @@ final class HomeViewController: UIViewController {
     }
     
     @IBAction func newGameButtonHandler(_ sender: Any) {
+        Game.instance.session = GameSession()
+        
         let storyboard = UIStoryboard(name: "Main", bundle: .none)
         guard let vc = storyboard.instantiateViewController(withIdentifier: "gameScreen") as? GameViewController else { return }
         vc.gameDelegate = self
-        Game.instance.session = GameSession()
         self.present(vc, animated: true, completion: .none)
     }
     
@@ -41,6 +42,7 @@ extension HomeViewController: GameViewControllerDelegate {
         if record.answered > 0 {
             Game.instance.addRecord(record)
         }
+        Game.instance.session = nil
         viewController.dismiss(animated: true)
     }
 }

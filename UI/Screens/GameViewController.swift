@@ -25,7 +25,7 @@ final class GameViewController: UIViewController {
     private var data = [Question]()
     
     weak var gameDelegate: GameViewControllerDelegate?
-    private var session = Game.instance.session
+    private weak var sessionDelegate: GameSessionDelegate?
     
     var prepareQuestionsStrategy: PrepareQuestionsStrtegy {
         switch Game.instance.order {
@@ -38,6 +38,7 @@ final class GameViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        self.sessionDelegate = Game.instance.session.self
         setGradientBackground()
         
         self.collectionView.delegate = self
@@ -46,9 +47,7 @@ final class GameViewController: UIViewController {
         self.collectionView.register(UINib(nibName: "AnswerCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "AnswerCell")
         
         self.collectionView.backgroundColor = UIColor.clear
-        
-        self.session = GameSession()
-        
+
         self.answered.addObserver(self, options: [.initial, .new], closure: { [weak self] value, _ in
             self?.scoreLabel.text = "Текущий вопрос \(value + 1) (\(prizes[value])$)"
         })
@@ -76,7 +75,7 @@ final class GameViewController: UIViewController {
     
     private func showNextQuestion() {
         let question = data[self.answered.value]
-        self.session?.facade.question = question
+        self.sessionDelegate?.nextQuestion(question: question)
         self.questionLabel.text = question.question
         self.collectionView.reloadData()
     }
@@ -94,9 +93,7 @@ final class GameViewController: UIViewController {
     }
     
     private func endGameSession() {
-        self.session?.answered = self.answered.value
-        let record = Record(self.session)
-        self.session = nil
+        let record = Record(Game.instance.session)
         self.gameDelegate?.gameViewController(self, didEndGameWith: record)
     }
     
@@ -104,7 +101,7 @@ final class GameViewController: UIViewController {
         let alert = UIAlertController(title: "Выход из игры", message: "Вы уверены, что хотите выйти?", preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Да", style: .default, handler: { _ in
-            self.session?.userBreak = true
+            self.sessionDelegate?.setUserBreak()
             self.endGameSession()
         }))
         
@@ -114,23 +111,20 @@ final class GameViewController: UIViewController {
     }
     
     @IBAction func phoneFriendButtonHandler(_ sender: Any) {
-        self.session?.facade.useHint(withType: .friend)
+        self.sessionDelegate?.applyHint(hint: .friend)
         self.phoneFriendButton.isEnabled = false
-        self.session?.hints[.friend] = true
         self.collectionView.reloadData()
     }
     
     @IBAction func askAudienceButtonHandler(_ sender: Any) {
-        self.session?.facade.useHint(withType: .audience)
+        self.sessionDelegate?.applyHint(hint: .audience)
         self.askAudienceButton.isEnabled = false
-        self.session?.hints[.audience] = true
         self.collectionView.reloadData()
     }
     
     @IBAction func fiftyFiftyButtonHandler(_ sender: Any) {
-        self.session?.facade.useHint(withType: .exclude)
+        self.sessionDelegate?.applyHint(hint: .exclude)
         self.fiftyFiftyButton.isEnabled = false
-        self.session?.hints[.exclude] = true
         self.collectionView.reloadData()
     }
 }
