@@ -16,20 +16,18 @@ final class HomeViewController: UIViewController {
     }
     
     @IBAction func newGameButtonHandler(_ sender: Any) {
+        Game.instance.session = GameSession()
+        
         let storyboard = UIStoryboard(name: "Main", bundle: .none)
         guard let vc = storyboard.instantiateViewController(withIdentifier: "gameScreen") as? GameViewController else { return }
         vc.gameDelegate = self
-        Game.instance.session = GameSession()
         self.present(vc, animated: true, completion: .none)
     }
     
     private func setGradientBackground() {
         let gradient = CAGradientLayer()
         
-        let startColor = UIColor(hexString: "#1e3b70").cgColor
-        let endColor = UIColor(hexString: "#29539b").cgColor
-        
-        gradient.colors = [startColor, endColor]
+        gradient.colors = [UIColor.startGradient.cgColor, UIColor.endGradient.cgColor]
         gradient.locations = [0.0 , 1.0]
         gradient.startPoint = CGPoint(x: 0.0, y: 0.0)
         gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
@@ -44,6 +42,7 @@ extension HomeViewController: GameViewControllerDelegate {
         if record.answered > 0 {
             Game.instance.addRecord(record)
         }
+        Game.instance.session = nil
         viewController.dismiss(animated: true)
     }
 }

@@ -11,7 +11,7 @@ enum Dificulty {
     case easy, medium, hard
 }
 
-let questionsDB: [Dificulty : [Question]] = [
+var questionsDB: [Dificulty : [Question]] = [
     .easy : [
         Question(
             question: "Откуда сотрудники офисов наливают в чашки воду?",
@@ -103,4 +103,8 @@ let prizes = [
 
 enum Hint {
     case friend, audience, exclude
+}
+
+enum QuestionsOrder: Int {
+    case predicted, random
 }

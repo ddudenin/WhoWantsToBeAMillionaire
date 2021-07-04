@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="QuestionCell" rowHeight="-321" id="KGk-i7-Jjw" customClass="QuestionTableViewCell" customModule="Millionaire" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="144"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="144"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Введите вопрос" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h9g-1O-9dn">
+                        <rect key="frame" x="20" y="10" width="280" height="25"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="288-rk-kza">
+                        <rect key="frame" x="26" y="45" width="268" height="34"/>
+                        <subviews>
+                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ответ 1" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ip4-2y-7Ep">
+                                <rect key="frame" x="0.0" y="0.0" width="129" height="34"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ответ 2" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sD2-qw-gGK">
+                                <rect key="frame" x="139" y="0.0" width="129" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                    </stackView>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="GCA-yw-sjd">
+                        <rect key="frame" x="26" y="89" width="268" height="34"/>
+                        <subviews>
+                            <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ответ 3" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LjE-Ca-DsP">
+                                <rect key="frame" x="0.0" y="0.0" width="129" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ответ 4" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NDS-c9-Evf">
+                                <rect key="frame" x="139" y="0.0" width="129" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="288-rk-kza" firstAttribute="top" secondItem="h9g-1O-9dn" secondAttribute="bottom" constant="10" id="1dt-vr-Io8"/>
+                    <constraint firstItem="GCA-yw-sjd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="7SG-Sm-fLA"/>
+                    <constraint firstItem="h9g-1O-9dn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="AlE-72-OhJ"/>
+                    <constraint firstItem="GCA-yw-sjd" firstAttribute="top" secondItem="288-rk-kza" secondAttribute="bottom" constant="10" id="H8d-XB-TZI"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="288-rk-kza" secondAttribute="trailing" constant="10" id="LmH-yw-xpS"/>
+                    <constraint firstAttribute="trailing" secondItem="h9g-1O-9dn" secondAttribute="trailing" constant="20" id="P3F-tJ-y17"/>
+                    <constraint firstItem="h9g-1O-9dn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="WMG-pv-CIH"/>
+                    <constraint firstItem="288-rk-kza" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="sIA-no-fPs"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="GCA-yw-sjd" secondAttribute="trailing" constant="10" id="y9S-Dk-ZVR"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="GCA-yw-sjd" secondAttribute="bottom" constant="10" id="zf7-wu-7m3"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="answer2TextField" destination="sD2-qw-gGK" id="jv7-gq-wCl"/>
+                <outlet property="answer3TextField" destination="LjE-Ca-DsP" id="6FF-T2-HNw"/>
+                <outlet property="answer4TextField" destination="NDS-c9-Evf" id="dcB-IO-RM7"/>
+                <outlet property="correctAnswerTextField" destination="ip4-2y-7Ep" id="wC5-00-qnb"/>
+                <outlet property="questionTextField" destination="h9g-1O-9dn" id="XXo-G3-Kug"/>
+            </connections>
+            <point key="canvasLocation" x="298.55072463768118" y="-198.88392857142856"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

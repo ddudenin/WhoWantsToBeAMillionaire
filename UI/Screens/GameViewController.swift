@@ -16,20 +16,29 @@ final class GameViewController: UIViewController {
     @IBOutlet private weak var collectionView: UICollectionView!
     
     @IBOutlet private weak var questionLabel: UILabel!
+    @IBOutlet private weak var scoreLabel: UILabel!
     @IBOutlet private weak var phoneFriendButton: UIButton!
     @IBOutlet private weak var askAudienceButton: UIButton!
     @IBOutlet private weak var fiftyFiftyButton: UIButton!
     
-    private var answered = 0
+    private var answered: Observable<Int> = Observable(0)
     private var data = [Question]()
     
     weak var gameDelegate: GameViewControllerDelegate?
-    private var session = Game.instance.session
+    private weak var sessionDelegate: GameSessionDelegate?
+    
+    var prepareQuestionsStrategy: PrepareQuestionsStrtegy {
+        switch Game.instance.order {
+        case .predicted: return PredictedOrderQuestionsStrategy()
+        case .random: return RandomOrderQuestionsStrategy()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        self.sessionDelegate = Game.instance.session.self
         setGradientBackground()
         
         self.collectionView.delegate = self
@@ -38,8 +47,10 @@ final class GameViewController: UIViewController {
         self.collectionView.register(UINib(nibName: "AnswerCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "AnswerCell")
         
         self.collectionView.backgroundColor = UIColor.clear
-        
-        self.session = GameSession()
+
+        self.answered.addObserver(self, options: [.initial, .new], closure: { [weak self] value, _ in
+            self?.scoreLabel.text = "Текущий вопрос \(value + 1) (\(prizes[value])$)"
+        })
         
         prepareQuestions()
         showNextQuestion()
@@ -56,13 +67,15 @@ final class GameViewController: UIViewController {
     }
     
     private func prepareQuestions() {
-        addQuestions(from: .easy)
-        addQuestions(from: .medium)
-        addQuestions(from: .hard)
+        self.data = [Question]()
+        self.data += self.prepareQuestionsStrategy.prepareQuestions(for: .easy)
+        self.data += self.prepareQuestionsStrategy.prepareQuestions(for: .medium)
+        self.data += self.prepareQuestionsStrategy.prepareQuestions(for: .hard)
     }
     
     private func showNextQuestion() {
-        let question = data[self.answered]
+        let question = data[self.answered.value]
+        self.sessionDelegate?.nextQuestion(question: question)
         self.questionLabel.text = question.question
         self.collectionView.reloadData()
     }
@@ -70,10 +83,7 @@ final class GameViewController: UIViewController {
     private func setGradientBackground() {
         let gradient = CAGradientLayer()
         
-        let startColor = UIColor(hexString: "#1e3b70").cgColor
-        let endColor = UIColor(hexString: "#29539b").cgColor
-        
-        gradient.colors = [startColor, endColor]
+        gradient.colors = [UIColor.startGradient.cgColor, UIColor.endGradient.cgColor]
         gradient.locations = [0.0 , 1.0]
         gradient.startPoint = CGPoint(x: 0.0, y: 0.0)
         gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
@@ -83,9 +93,7 @@ final class GameViewController: UIViewController {
     }
     
     private func endGameSession() {
-        self.session?.answered = self.answered
-        let record = Record(self.session)
-        self.session = nil
+        let record = Record(Game.instance.session)
         self.gameDelegate?.gameViewController(self, didEndGameWith: record)
     }
     
@@ -93,70 +101,31 @@ final class GameViewController: UIViewController {
         let alert = UIAlertController(title: "Выход из игры", message: "Вы уверены, что хотите выйти?", preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Да", style: .default, handler: { _ in
-            self.session?.userBreak = true
+            self.sessionDelegate?.setUserBreak()
             self.endGameSession()
         }))
         
         alert.addAction(UIAlertAction(title: "Нет", style: .cancel, handler: nil))
         
         self.present(alert, animated: true, completion: nil)
-        
-        
     }
     
     @IBAction func phoneFriendButtonHandler(_ sender: Any) {
-        let alert = UIAlertController(title: "Ответ друга",
-                                      message: "\(data[self.answered].answers[Int.random(in: 0...3)])",
-                                      preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alert.addAction(action)
-        self.present(alert, animated: true, completion: nil)
-        
+        self.sessionDelegate?.applyHint(hint: .friend)
         self.phoneFriendButton.isEnabled = false
-        self.session?.hints[.friend] = true
+        self.collectionView.reloadData()
     }
     
     @IBAction func askAudienceButtonHandler(_ sender: Any) {
-        var counts = [0, 0, 0, 0];
-        
-        for _ in 0..<100 {
-            let index = Int.random(in: 0...3)
-            counts[index] += 1
-        }
-        
-        let answers = data[self.answered].answers
-        var statString = ""
-        for i in 0..<4 {
-            statString += "\(answers[i]) \(counts[i])\n"
-        }
-        
-        let alert = UIAlertController(title: "Опрос зала", message: statString, preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alert.addAction(action)
-        self.present(alert, animated: true, completion: nil)
-        
+        self.sessionDelegate?.applyHint(hint: .audience)
         self.askAudienceButton.isEnabled = false
-        self.session?.hints[.audience] = true
+        self.collectionView.reloadData()
     }
     
     @IBAction func fiftyFiftyButtonHandler(_ sender: Any) {
-        var indexes = [data[answered].answerID]
-        
-        while indexes.count < 3 {
-            let index = Int.random(in: 0...3)
-            
-            guard !indexes.contains(index) else { continue }
-            
-            let indexPath = IndexPath(row: index, section: 0)
-            let cell = self.collectionView.cellForItem(at: indexPath)
-            
-            (cell as! AnswerCollectionViewCell).setAnswerText(answer: "")
-            
-            indexes.append(index)
-        }
-        
+        self.sessionDelegate?.applyHint(hint: .exclude)
         self.fiftyFiftyButton.isEnabled = false
-        self.session?.hints[.exclude] = true
+        self.collectionView.reloadData()
     }
 }
 
@@ -175,7 +144,12 @@ extension GameViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return AnswerCollectionViewCell()
         }
         
-        cell.setAnswerText(answer: data[answered].answers[indexPath.row])
+        let question = data[self.answered.value]
+        cell.setAnswerText(answer: question.answers[indexPath.row])
+        
+        if question.friendID == indexPath.row {
+            cell.backgroundColor = UIColor.systemYellow
+        }
         
         return cell
     }
@@ -183,9 +157,9 @@ extension GameViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.collectionView.deselectItem(at: indexPath, animated: true)
         
-        let answerID = self.data[self.answered].answerID
+        let answerID = self.data[self.answered.value].answerID
         if indexPath.row != answerID {
-            let message = "Правильный ответ: \(self.data[self.answered].answers[answerID])"
+            let message = "Правильный ответ: \(self.data[self.answered.value].answers[answerID])"
             
             let alert = UIAlertController(title: "Вы проиграли", message: message, preferredStyle: .alert)
             let action = UIAlertAction(title: "OK", style: .cancel, handler: { _ in
@@ -197,9 +171,9 @@ extension GameViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return
         }
         
-        self.answered += 1
+        self.answered.value += 1
         
-        if self.answered == data.count {
+        if self.answered.value == data.count {
             let alert = UIAlertController(title: "Поздравляю", message: "Вы стали миллионером", preferredStyle: .alert)
             let action = UIAlertAction(title: "OK", style: .cancel, handler: { _ in
                 self.endGameSession()

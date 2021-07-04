@@ -3,4 +3,54 @@
    uuid = "3E4ABF0A-4D6D-4526-83EF-74E49FFF2F73"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "270DA6E4-93AA-4766-BD83-7247C1D1C7A8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Fundamental/GameSession.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "addRecord(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "270DA6E4-93AA-4766-BD83-7247C1D1C7A8 - 9984d5457f56612d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Millionaire.Game.addRecord(Millionaire.Record) -&gt; ()"
+                  moduleName = "Millionaire"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dmitry/Desktop/Millionaire/Fundamental/GameSession.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "135">
+               </Location>
+               <Location
+                  uuid = "270DA6E4-93AA-4766-BD83-7247C1D1C7A8 - 55d19dec26120d1b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Millionaire.Record) -&gt; Swift.Bool in Millionaire.Game.addRecord(Millionaire.Record) -&gt; ()"
+                  moduleName = "Millionaire"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dmitry/Desktop/Millionaire/Fundamental/GameSession.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
